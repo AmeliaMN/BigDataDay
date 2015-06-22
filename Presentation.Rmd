@@ -1,0 +1,66 @@
+---
+title: "Using data visualization to find patterns in multidimensional data"
+author: "Amelia McNamara @AmeliaMN"
+date: "June 27, 2015"
+output: ioslides_presentation
+---
+
+## About me
+I'm an academic, so the techniques I am going to talk about come from academia. 
+
+Here's an extra-credit question (tweet at me!): who is the research in common with all three methods I'm talking about today?
+
+## Big data versus multidimensional data
+
+I don't believe in big data, but I do believe in multidimensional data. 
+
+## Generalized pairs plot
+
+Do you know the scatterplot matrix or pairs plot? Generally, it looks like this:
+
+```{r}
+plot(mtcars)
+```
+
+## 
+
+That's a lot to look at, so lets take a subset:
+```{r, warning=FALSE, message=FALSE}
+library(dplyr)
+select(mtcars, mpg, cyl, disp) %>% plot()
+```
+
+## Generalized pairs plot (citation)
+
+The pairs plot is useful on its own, but the generalized pairs plot is even better.
+
+Emerson, J. W., Green, W. A., Schloerke, B., Crowley, J., Cook, D., Hofmann, H., and Wickham, H. (2013). The generalized pairs plot. Journal of Computational and Graphical Statistics, 22(1):79–91. 
+
+[http://bit.ly/gpairs](http://bit.ly/gpairs)
+
+## 
+
+```{r}
+library(gpairs)
+gpairs(mtcars)
+```
+
+## Grand Tour
+
+The Grand Tour lets you explore multidimensional data more genericly. 
+```{r, echo=FALSE}
+library(knitr)
+opts_knit$set(animation.fun = hook_scianimator)
+knit_hooks$set(custom_plot = hook_plot_custom)
+```
+
+```{r, custom_plot = TRUE, fig.ext='png', echo=FALSE}
+library(tourr)
+tourr::render(flea[, 1:6], grand_tour(d = 2), display = display_xy(), frames=30, dev="png", fig_path(".png"))
+Sys.sleep(1)
+```
+
+## Graphical inference
+
+
+
