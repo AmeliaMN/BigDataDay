@@ -1,6 +1,8 @@
 # BigDataDay
 Presentation for Big Data Day 2015
 
+Title: Using data visualization to find patterns in multidimensional data
+
 Like the [abstract](http://bigdatadayla.org/) says, 
 "While machine learning methods have made great strides in predictive analytics, there are many components of data science that still require human intervention.
 In particular, people are great at finding visual patterns in data. 
