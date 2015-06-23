@@ -2,13 +2,23 @@
 title: "Using data visualization to find patterns in multidimensional data"
 author: "Amelia McNamara @AmeliaMN"
 date: "June 27, 2015"
-output: ioslides_presentation
+output: 
+  ioslides_presentation:
+    includes:
+      in_header: header.html
+    self_contained: false
 ---
 
 ## About me
 I'm an academic, so the techniques I am going to talk about come from academia. 
 
 Here's an extra-credit question (tweet at me!): who is the research in common with all three methods I'm talking about today?
+
+```{r, echo=FALSE}
+library(knitr)
+opts_knit$set(animation.fun = hook_scianimator, cache=TRUE)
+knit_hooks$set(custom_plot = hook_plot_custom)
+```
 
 ## Big data versus multidimensional data
 
@@ -18,14 +28,14 @@ I don't believe in big data, but I do believe in multidimensional data.
 
 Do you know the scatterplot matrix or pairs plot? Generally, it looks like this:
 
-```{r}
+```{r pairsplot}
 plot(mtcars)
 ```
 
 ## 
 
 That's a lot to look at, so lets take a subset:
-```{r, warning=FALSE, message=FALSE}
+```{r subpairsplot, warning=FALSE, message=FALSE}
 library(dplyr)
 select(mtcars, mpg, cyl, disp) %>% plot()
 ```
@@ -40,23 +50,20 @@ Emerson, J. W., Green, W. A., Schloerke, B., Crowley, J., Cook, D., Hofmann, H.,
 
 ## 
 
-```{r}
+```{r gpairsplot}
 library(gpairs)
 gpairs(mtcars)
 ```
 
 ## Grand Tour
 
-The Grand Tour lets you explore multidimensional data more genericly. 
-```{r, echo=FALSE}
-library(knitr)
-opts_knit$set(animation.fun = hook_scianimator)
-knit_hooks$set(custom_plot = hook_plot_custom)
-```
+The Grand Tour lets you explore multidimensional data more generically. 
 
-```{r, custom_plot = TRUE, fig.ext='png', echo=FALSE}
+##
+```{r tourr, custom_plot=TRUE, fig.show='animate', fig.ext='png', echo=FALSE, message=FALSE, out.width='2.5in',fig.num=190}
 library(tourr)
-tourr::render(flea[, 1:6], grand_tour(d = 2), display = display_xy(), frames=30, dev="png", fig_path(".png"))
+tourr::render(flea[, 1:6], grand_tour(d = 2), display = display_xy(), frames=190, apf=1/19, dev="png", fig_path("%1d.png"), width=240, height=240)
+#tourr::animate(flea[, 1:6], grand_tour(d = 2), display = display_xy(), fps=19,  max_frames=100)
 Sys.sleep(1)
 ```
 
