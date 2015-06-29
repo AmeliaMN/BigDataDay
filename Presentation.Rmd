@@ -96,7 +96,7 @@ library(tourr)
 select(diamonds, carat, depth, table, x, y, z) %>% animate(grand_tour(), display = display_xy(), fps=15)
 ```
 
-```{r tourr, custom_plot=TRUE, fig.show='animate', fig.ext='png', echo=FALSE, message=FALSE, fig.num=300, interval=0.09, aniopts='loop, controls, autoplay'}
+```{r tourr, custom_plot=TRUE, fig.show='animate', fig.ext='png', echo=FALSE, message=FALSE, fig.num=300, interval=0.09, aniopts='loop, controls, autoplay', loopMode='sweep'}
 library(tourr)
 select(diamonds, carat, depth, table, x, y, z) %>% tourr::render(grand_tour(d = 2), display = display_xy(), frames=300, apf=1/15, dev="png", fig_path("%1d.png"), width=480, height=480)
 Sys.sleep(1)

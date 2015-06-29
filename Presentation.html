@@ -203,6 +203,7 @@ select(diamonds, carat, depth, table, x, y, z) %&gt;% animate(grand_tour(), disp
       $("#tourr").scianimator({
           "images": imgs,
           "delay": 90,
+          "loopMode": "sweep",
           "controls": ["first", "previous", "play", "next", "last", "loop", "speed"],
       });
       $("#tourr").scianimator("play");
